@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+a {
+  color: white !important;
+}
+
+/* SideBar Elements */
+.card-icon {
+  font-size: 30px;
+}
+
+#percentage-up {
+  color: green;
+}
+#percentage-down {
+  color: red;
+}
+.social-icon {
+  font-size: 20px;
+}
+
+/* Dashboard Elements */

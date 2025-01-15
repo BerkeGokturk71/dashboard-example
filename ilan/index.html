@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    
+
+<body>
+    <nav class="navbar">  
+        <div class="logo"><a href="http://127.0.0.1:5500/"><img src="https://pbs.twimg.com/media/GC6mM_kWcAABuCW.jpg" alt="" srcset=""></a></div>
+        <ul class="nav-links">
+           <li><a href="#">Anasayfa</a></li>     
+        </ul>
+        <ul class="nav-links">
+           <li> <a href="#">Hakkımızda</a></li>     
+        </ul>
+        <ul class="nav-links">
+           <li> <a id="btn-window" href="#">İlan Oluştur</a></li>     
+        </ul>
+       
+    </nav>
+    <div id="open-window">
+        <form action="post">
+            <div class="open-window-div">
+                <label for="title">Ürün Başlığı</label>
+                <input type="text" name="title" id="title">
+            </div>
+            <div class="open-window-div">
+                <label for="description">Ürün Açıklaması</label>
+                <textarea name="description" id="description"></textarea>
+            </div>
+            <div class="open-window-div">       
+                <label for="product-image">Ürün görsel linki</label>
+                <input type="text" name="image" id="product-image" required>
+            </div> 
+            <div class="open-window-div">   
+                <label for="product-categories">Ürün Kategorisi</label>
+                <select name="product-categories" id="product-categories">
+                    <option value="araba">Araba</option>
+                    <option value="kamyon">Kamyon</option>
+                </select>
+            </div> 
+            
+            <div class="open-window-div">
+                <label for="product-price">Ürün fiyatı</label>
+                <input type="number" name="product-price " id="product-price">
+            </div>
+
+            <div class="vehicle-info open-window-div">
+                <label for="vehicle-info">0 ürün</label>
+                <input type="checkbox" name="vehicle-info" id="vehicle-info" value="0 ürün" required>
+                <label for="vehicle-info2">2. el ürün</label>
+                <input type="checkbox" name="vehicle-info2" id="vehicle-info2" value="2. el ürün">
+            </div>
+
+            <div class="open-window-div">
+                <label for="product-owner">Satıcı Firma</label>
+                <input type="text" name="product-owner" id="product-owner" placeholder="ürün satıcısı ismi..">
+            </div>
+
+            <input type="submit" value="Gönder">
+        </form>
+    </div>
+    <form action="" id="search-result-form" method="get">
+        <div id="search-result-filter">
+            
+            <div class="search-result-filter-container">
+                <h2>Filtreleme</h2>   
+                <ul>
+                    <li>
+                        <div class="filter-content">
+                            <div class="filter-content-elements">
+                                <label for="vehicle-filter-1">araba</label>
+                                <input type="checkbox" name="vehicle-filter-1" value="araba">
+                            </div>
+                            <div class="filter-content-elements">
+                                <label for="vehicle-filter-2-">Kamyon</label>
+                                <input type="checkbox" name="vehicle-filter-2" value="Kamyon">
+                            </div>
+                            <div class="filter-content-elements">
+                                <label for="vehicle-filter-3">Tır</label>
+                                <input type="checkbox" name="vehicle-filter-3" value="Tır">
+                            </div>
+                            <div class="filter-content-elements">
+                                <label for="vehicle-filter-4">Motor</label>
+                                <input type="checkbox" name="vehicle-filter-4" value="Motor">
+                            </div>
+                            <div class="filter-content-elements">
+                                <label for="vehicle-filter-5">Bisiklet</label>
+                                <input type="checkbox" name="vehicle-filter-5" value="Bisiklet">
+                            </div>        
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="search-result-filter-container">
+                
+                <h2>Adres</h2>
+                
+                <ul>    
+                    <li>
+                        <div class="container-dropdown">      
+                                <div id="dropdown-for-town">
+                                    <label for="town-select"></label>
+                                    <select name="town-select" id="town-select-dropdown" >
+                                        <option value="Ankara">Ankara</option>
+                                        <option value="Ankara">İzmir</option>
+                                        <option value="Ankara">Muğla</option>
+                                        <option value="Ankara">İstanbul</option>
+                                        <option value="Ankara">Eskişehir</option>
+                                    </select>
+                                </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>      
+        </div>
+        
+
+        <div class="container-table">
+            <table id="search-result">
+                <thead>            
+                    <td>Resim</td>
+                    <td>Kategori</td>
+                    <td>Ürün Başlığı</td>
+                    <td>Satıcı</td>
+                    <td>Ürün açıklaması</td>
+                    <td>Fiyat</td>        
+                </thead>
+                <tbody class="table-body">
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="https://hips.hearstapps.com/hmg-prod/images/2025-bmw-m3-110-66562ddceaf59.jpg?crop=0.752xw:0.501xh;0.105xw,0.331xh&resize=1200:*" alt="yok resim"></td>
+                        <td id="search-result-product-categoies">Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td id="search-result-product-description">Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><img src="https://www.mercedes-benz.com.tr/content/turkey/tr/passengercars/models/coupe/x290-e-performance-23-2/overview/_jcr_content/root/responsivegrid/tabs/tabitem/simple_teaser/simple_teaser_item_1241872842.component.damq2.3411948546218.jpg/mercedes-amg-gt-63-se-perf-x290-equipment-exterior-night-package-764x573-08-2023.jpg" alt="yok resim"></td>
+                        <td>Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="#" alt="yok resim"></td>
+                        <td>Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                    <tr>
+                        <td><img src="#" alt="yok resim"></td>
+                        <td>Lorem, ipsum dolor.</td>
+                        <td>Lorem ipsum dolor sit amet consectetur.</td>
+                        <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus consequuntur inventore laboriosam.</td>
+                        <td>Lorem ipsum dolor sit.</td>
+                        <td>10.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </form>
+    <footer>
+        <div id="footer-area-container">
+            <div>   
+                <div class="footer-main-titles">Kurumsal</div>  
+                <ul>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                </ul>
+            </div>         
+            <div>   
+                <div class="footer-main-titles">Hizmetlerimiz</div>  
+                <ul>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                </ul>
+            </div>         
+            <div>   
+                <div class="footer-main-titles">Mağazalar</div>  
+                <ul>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                </ul>
+            </div>         
+            <div>   
+                <div class="footer-main-titles">Bizi Takip Edin</div>  
+                <ul>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                    <li><a href="#">Test</a></li>
+                </ul>
+            </div>         
+            
+        </div>
+        <div id="copyright">
+            <p>Tüm hakları sakladır @2024</p>
+        </div>
+    </footer>
+</body>
+<script src="index.js"></script>
+</html>
