@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: medium;
+}
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+main {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-nav a {
+  color: white;
+}
+.navbar-nav a:hover {
+  color: rgba(210, 148, 68, 0.7);
+}
+.modal {
+  color: white !important;
+}
+
+.dropdown button {
+  color: black !important;
+}
+
+footer a {
+  text-decoration: none;
+}
+.collapse {
+  border-top: 1px solid rgb(177, 177, 177, 0.4);
+  border-bottom: 1px solid rgb(177, 177, 177, 0.4);
+}
