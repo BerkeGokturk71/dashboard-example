@@ -42,7 +42,7 @@ login_btn.addEventListener('click', () => {
       user['username'] == inputArray[0] &&
       user['password'] == inputArray[1]
     ) {
-      console.log('baaaa');
+      console.log('yönlendirme yapılıyor....');
       window.open('http://127.0.0.1:5500/dashboard/index.html', '_blank');
       console.log('Başarılı giriş');
       input_value = [];
