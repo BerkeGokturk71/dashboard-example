@@ -3,6 +3,7 @@ let input_value = [];
 const login_btn = document.querySelectorAll('.login-button')[0];
 const alert_box = document.querySelector('header');
 const user = { username: 'berke', password: 'Abc123' };
+const logout = document.querySelector('.logout');
 
 function containsUpperCase(str) {
   const regex = /[A-Z]/; // Büyük harfleri temsil eden regex
@@ -47,16 +48,24 @@ function getLocal() {
   const getLocal_variable = JSON.parse(localStorage.getItem('user'));
   let sign_button = document.querySelector('#sign-in');
   const username = getLocal_variable[0];
+
   if (username == '' || username == null) {
-    console.log('local boşta');
+    console.log('localStorage boşta');
   }
   sign_button = sign_button.parentNode;
   sign_button.setAttribute('data-bs-target', '');
+  logout.style.visibility = 'visible';
   sign_button.innerHTML = `Hoşgeldiniz ${username}`;
   console.log(getLocal_variable);
   return getLocal_variable;
 }
 
+function removeLocal() {
+  const removeLocal_variable = localStorage.removeItem('user');
+  console.log('localden başarıyla kaldırıldı');
+  logout.style.visibility = 'hidden';
+  return removeLocal_variable;
+}
 function alertBox(color, text) {
   let alert = document.createElement('div');
   alert.classList.add(
@@ -67,7 +76,7 @@ function alertBox(color, text) {
     'show'
   );
   alert.innerHTML = `
-        <strong>Warning!</strong>${text}!
+        <strong>!</strong>${text}!
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       `;
 
@@ -76,6 +85,10 @@ function alertBox(color, text) {
     alert.remove();
   }, 2500);
 }
+
+logout.addEventListener('click', () => {
+  removeLocal();
+});
 
 login_btn.addEventListener('click', (event) => {
   event.preventDefault();
@@ -86,7 +99,7 @@ login_btn.addEventListener('click', (event) => {
       user['password'] == inputArray[1]
     ) {
       const text = 'Giriş Başarılı';
-      const color = 'primary';
+      const color = 'success';
       console.log('yönlendirme yapılıyor....');
       console.log('Başarılı giriş');
       setLocal(inputArray);

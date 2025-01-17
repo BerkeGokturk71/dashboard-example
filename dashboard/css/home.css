@@ -39,3 +39,9 @@ footer a {
   border-top: 1px solid rgb(177, 177, 177, 0.4);
   border-bottom: 1px solid rgb(177, 177, 177, 0.4);
 }
+
+.logout {
+  visibility: hidden;
+  text-decoration: underline;
+  font-size: medium;
+}
