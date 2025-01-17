@@ -45,8 +45,14 @@ function setLocal(inputArray) {
 
 function getLocal() {
   const getLocal_variable = JSON.parse(localStorage.getItem('user'));
-  const sign_button = document.querySelector('#sign-in');
-  sign_button.innerHTML = `Hoşgeldiniz ${getLocal_variable[0]}`;
+  let sign_button = document.querySelector('#sign-in');
+  const username = getLocal_variable[0];
+  if (username == '' || username == null) {
+    console.log('local boşta');
+  }
+  sign_button = sign_button.parentNode;
+  sign_button.setAttribute('data-bs-target', '');
+  sign_button.innerHTML = `Hoşgeldiniz ${username}`;
   console.log(getLocal_variable);
   return getLocal_variable;
 }
@@ -96,3 +102,5 @@ login_btn.addEventListener('click', (event) => {
     alertBox(color, text);
   }
 });
+
+getLocal();
