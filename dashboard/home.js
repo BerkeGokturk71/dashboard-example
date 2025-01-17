@@ -1,7 +1,7 @@
 const inputs_value = document.querySelectorAll('.form-control');
 let input_value = [];
 const login_btn = document.querySelectorAll('.login-button')[0];
-
+const alert_box = document.querySelector('header');
 const user = { username: 'berke', password: 'Abc123' };
 
 function containsUpperCase(str) {
@@ -11,7 +11,7 @@ function containsUpperCase(str) {
 
 function elements_to_array(inputs_value) {
   inputs_value.forEach((element) => {
-    const value = element.value; // textContent yerine value
+    const value = element.value;
     input_value.push(value);
   });
   return input_value;
@@ -34,21 +34,65 @@ function controllerPassword(inputArray) {
   console.log('Hata: Şifre 5 karakterden kısa veya büyük harf içermiyor');
   return false;
 }
+function setLocal(inputArray) {
+  const setLocal_variable = localStorage.setItem(
+    'user',
+    JSON.stringify(inputArray)
+  );
+  console.log('locale kayıt edildi');
+  return setLocal_variable;
+}
 
-login_btn.addEventListener('click', () => {
-  const inputArray = elements_to_array(inputs_value); // Dizi oluşturma
+function getLocal() {
+  const getLocal_variable = JSON.parse(localStorage.getItem('user'));
+  const sign_button = document.querySelector('#sign-in');
+  sign_button.innerHTML = `Hoşgeldiniz ${getLocal_variable[0]}`;
+  console.log(getLocal_variable);
+  return getLocal_variable;
+}
+
+function alertBox(color, text) {
+  let alert = document.createElement('div');
+  alert.classList.add(
+    'alert',
+    `alert-${color}`,
+    'alert-dismissible',
+    'fade',
+    'show'
+  );
+  alert.innerHTML = `
+        <strong>Warning!</strong>${text}!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+
+  alert_box.appendChild(alert);
+  setTimeout(function () {
+    alert.remove();
+  }, 2500);
+}
+
+login_btn.addEventListener('click', (event) => {
+  event.preventDefault();
+  const inputArray = elements_to_array(inputs_value);
   if (controllerUsername(inputArray) && controllerPassword(inputArray)) {
     if (
       user['username'] == inputArray[0] &&
       user['password'] == inputArray[1]
     ) {
+      const text = 'Giriş Başarılı';
+      const color = 'primary';
       console.log('yönlendirme yapılıyor....');
-      window.open('http://127.0.0.1:5500/dashboard/index.html', '_blank');
       console.log('Başarılı giriş');
+      setLocal(inputArray);
+      alertBox(color, text);
+      getLocal();
       input_value = [];
     }
   } else {
+    const text = 'Giriş Başarısız';
+    const color = 'danger';
     input_value = [];
     console.log('Başarısız giriş denemesi');
+    alertBox(color, text);
   }
 });
